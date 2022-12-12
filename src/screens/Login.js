@@ -93,7 +93,8 @@ const Login = () => {
               marginHorizontal: 80,
               marginVertical: 20,
               borderRadius: 10,
-              justifyContent: 'space-between'
+              justifyContent: 'space-between',
+              borderWidth: 0.5
             }}>
             <Text style={{
               fontFamily: 'RobotoSlab-Regular',
