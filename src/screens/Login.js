@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
 
 import firestore from '@react-native-firebase/firestore'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Login = () => {
 
@@ -28,8 +29,10 @@ const Login = () => {
   const adminLogin = async () => {
     const users = await firestore().collection('admin').get();
     if (email === users.docs[0]._data.email && 
-      password === users.docs[0]._data.password) {
-      navigation.navigate('Dashboard')
+      password === users.docs[0]._data.password) 
+      {
+       await AsyncStorage.setItem('EMAIL', email)
+       navigation.navigate('Dashboard')
     } else {
       alert("Wrong Email or Password")
     }

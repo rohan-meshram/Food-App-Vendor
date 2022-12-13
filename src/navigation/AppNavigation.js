@@ -7,6 +7,10 @@ import Splash from '../screens/Splash';
 import Login from '../screens/Login';
 import Dashboard from '../screens/Dashboard';
 import EditItem from '../screens/EditItem';
+import SelectLogin from '../screens/user/SelectLogin';
+import UserLogin from '../screens/user/UserLogin';
+import UserSignup from '../screens/user/UserSignup';
+import Home from '../screens/user/Home';
 
 const Stack = createStackNavigator();
 
@@ -28,6 +32,22 @@ AppNavigation = () => {
                 />
                 <Stack.Screen name="EditItem"
                     component={EditItem}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen name="SelectLogin"
+                    component={SelectLogin}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen name="UserLogin"
+                    component={UserLogin}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen name="UserSignup"
+                    component={UserSignup}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen name="Home"
+                    component={Home}
                     options={{ headerShown: false }}
                 />
             </Stack.Navigator>

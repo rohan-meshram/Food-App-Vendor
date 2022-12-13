@@ -13,7 +13,7 @@ const Splash = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('Login')
+      navigation.navigate('SelectLogin')
      // StatusBar.setHidden(false)
     }, 2500)
   }, [])

@@ -80,6 +80,7 @@ const EditItem = () => {
             })
             .then(() => {
                 console.log("Item Updated");
+                navigation.goBack();
             })
     }
 

@@ -2,9 +2,11 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import firestore from '@react-native-firebase/firestore'
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
-import {useNavigation} from '@react-navigation/native'
+import {useIsFocused, useNavigation} from '@react-navigation/native'
 
 const Items = () => {
+
+  const isFocused = useIsFocused()
 
   const navigation = useNavigation();
 
