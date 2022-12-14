@@ -1,9 +1,15 @@
 // copy code from react native modal
 
-import { View, Text, Modal, StyleSheet, ActivityIndicator } from 'react-native'
+import { View, Text, Modal, StyleSheet, ActivityIndicator, StatusBar } from 'react-native'
 import React from 'react'
+import { useFocusEffect } from '@react-navigation/native'
 
 const Loader = ({modalVisible, setModalVisible}) => {
+
+  useFocusEffect (() => {
+    StatusBar.setHidden(true)
+  })
+
   return (
     <Modal
         animationType="slide"

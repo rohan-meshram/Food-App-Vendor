@@ -22,19 +22,19 @@ const UserSignup = () => {
     const saveUser = () => {
         setModalVisible(true)
         firestore()
-            .collection('user')
+            .collection('users')
             .add({
                 Name: name,
                 Email: email,
                 Mobile: mobile,
-                Password: password
+                Password: password,
             }).then(res => {
                 setModalVisible(false);
                 navigation.goBack();
             })
             .catch(error => {
-                console.log(error);
                 setModalVisible(false)
+                console.log(error);
             })
     }
 
@@ -60,8 +60,8 @@ const UserSignup = () => {
                     onChangeText={txt => setMobile(txt)} />
 
                 <View style={styles.customTextBox}>
-                    
-                        <TextInput style={styles.textInput}
+
+                    <TextInput style={styles.textInput}
                         placeholder='Enter Password'
                         value={password}
                         onChangeText={txt => setPassword(txt)}
@@ -70,12 +70,14 @@ const UserSignup = () => {
                         <Ionicons name={isIconVisible ? 'eye-off-outline' : 'eye-outline'}
                             size={20} color={'#001524'} style={{ marginRight: 10 }} />
                     </TouchableOpacity>
-                    
+
                 </View>
             </View>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity onPress={() => {
-                    if (email !== '' && password !== '' && name !== '' && (mobile !== '' && mobile.length === 10)) {
+                    if (email !== '' &&
+                        password !== '' &&
+                        name !== '' && (mobile !== '' && mobile.length === 10)) {
                         saveUser();
                         console.log("User Added!");
                     } else {
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFECD1'
     },
     customTextBox: {
-       // flex: 1,
+        // flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
