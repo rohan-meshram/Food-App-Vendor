@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Image, StatusBar } from 'react-native'
 import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useFocusEffect } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Splash = () => {
 
@@ -13,12 +14,20 @@ const Splash = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('SelectLogin')
+     checkLogin();
      // StatusBar.setHidden(false)
     }, 2500)
   }, [])
 
-
+const checkLogin = async() => {
+  const email = await AsyncStorage.getItem('EMAIL');
+  console.log(email);
+  if(email !== null) {
+    navigation.navigate('Home')
+  }else{
+    navigation.navigate('SelectLogin')
+  }
+}
 
   return (
     <View style={styles.container}>

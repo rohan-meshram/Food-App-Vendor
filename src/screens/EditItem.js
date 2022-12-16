@@ -77,6 +77,7 @@ const EditItem = () => {
                 DiscountPrice: discount,
                 Description: description,
                 imageURL: route.params.data.imageURL + '',
+                Cart : [],
             })
             .then(() => {
                 console.log("Item Updated");

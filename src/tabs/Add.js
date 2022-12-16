@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker'
 import storage from '@react-native-firebase/storage' // for image upload
 import firestore from '@react-native-firebase/firestore'  // for item details upload
-
+import uuid from 'react-native-uuid'
 
 const Add = () => {
 
@@ -13,6 +13,7 @@ const Add = () => {
   const [discount, setDiscount] = useState('')
   const [description, setDescription] = useState('')
   const [imageURL, setimageURL] = useState('')
+  //const [qty, setQty] = useState(1)
 
   const requestCameraPermission = async () => {
     try {
@@ -62,6 +63,8 @@ const Add = () => {
   };
 
   const uploadItem = (url) => {
+    const itemId = uuid.v4();
+    const qty = 1;
     firestore()
       .collection('items')
       .add({
@@ -70,6 +73,8 @@ const Add = () => {
         DiscountPrice: discount,
         Description: description,
         imageURL: url + '',
+        ItemId: itemId,
+        Qty: qty,
       })
       .then(() => {
         console.log("Item Added");

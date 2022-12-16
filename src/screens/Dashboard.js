@@ -62,7 +62,8 @@ export default Dashboard
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+      //  marginBottom: 60
     },
     bottomView: {
         width: '100%',
@@ -73,13 +74,15 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         backgroundColor: '#78290F',
-        elevation: 10
+        elevation: 10,
+    //    marginTop: 60
     },
     bottomTab: {
         height: '100%',
         width: '20%',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        
     },
     bottomTabImage: {
         width: 27,

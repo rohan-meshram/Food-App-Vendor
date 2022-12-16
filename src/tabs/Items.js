@@ -20,11 +20,12 @@ const Items = () => {
       .collection('items')
       .get()
       .then(querySnapshot => {
+       // console.log(data)
         console.log('Total Items: ', querySnapshot.size);
         let tempData = []
         querySnapshot.forEach(documentSnapshot => {
           console.log(
-            'User Id: ',
+            'Item Id: ',
             documentSnapshot.id,
             documentSnapshot.data(),
           );
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderRadius: 10,
     backgroundColor: '#E9D3B4',
-    marginBottom: 10
+    marginBottom: 15
   },
   itemImage: {
     width: 110,
@@ -144,5 +145,8 @@ const styles = StyleSheet.create({
   icon: {
     width: 24,
     height: 24
+  },
+  emptyView: {
+    marginBottom: 70
   }
 })

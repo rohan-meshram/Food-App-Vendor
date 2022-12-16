@@ -32,27 +32,29 @@ const UserLogin = () => {
             .then(querySnapshot => {
                 setModalVisible(false);
                 /* ... */
+                console.log(querySnapshot.docs);
                  if (querySnapshot.docs[0]._data !== null) {
                      if (
                          querySnapshot.docs[0]._data.Email === email &&
                          querySnapshot.docs[0]._data.Password === password
                     ) {
-                        goToNextScreen();
+                        goToNextScreen(querySnapshot.docs[0]._data.userId);
                      }
                        
                  }
-               // console.log(querySnapshot.docs[0]._data);
+                console.log(querySnapshot.docs[0]._data);
             })
              .catch(error => {
                  setModalVisible(false);
-              //   console.log(error);
+                 console.log(error);
                  alert('Please Check Email/Password');
              });
     };
 
 
-    const goToNextScreen = async () => {
+    const goToNextScreen = async UserId => {
         await AsyncStorage.setItem('EMAIL', email)
+        await AsyncStorage.setItem('USERID', UserId)
         navigation.navigate('Home')
     }
 

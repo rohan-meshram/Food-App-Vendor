@@ -1,9 +1,14 @@
-import { View, Text, StyleSheet } from 'react-native'
+import {
+    View,
+    Text,
+    StyleSheet,
+    TextInput,
+    TouchableOpacity
+} from 'react-native'
 import React, { useState } from 'react'
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import firestore from '@react-native-firebase/firestore'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-
+import uuid from 'react-native-uuid'
 
 import { useNavigation } from '@react-navigation/native'
 import Loader from '../common/Loader'
@@ -17,17 +22,22 @@ const UserSignup = () => {
     const [email, setEmail] = useState('');
     const [mobile, setMobile] = useState('');
     const [password, setPassword] = useState('');
+    const [qty, setQty] = useState(1)
     const [modalVisible, setModalVisible] = useState(false);
 
     const saveUser = () => {
         setModalVisible(true)
+        const userId = uuid.v4();
         firestore()
             .collection('users')
-            .add({
+            .doc(userId)
+            .set({
                 Name: name,
                 Email: email,
                 Mobile: mobile,
                 Password: password,
+                userId: userId,
+                Cart: [],
             }).then(res => {
                 setModalVisible(false);
                 navigation.goBack();
