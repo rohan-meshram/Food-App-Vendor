@@ -138,7 +138,8 @@ const Cart = () => {
             {cartList.length > 0 && (
                 <View style={styles.checkoutView}>
                 <Text style={styles.checkoutText}>{'Items (' + cartList.length + ')\nTotal: ₹' +getTotal()}</Text>
-                <TouchableOpacity style={[styles.addToCartBtn, {width: 120, height:40, justifyContent: 'center', alignItems: 'center', marginLeft: 60}]}>
+                <TouchableOpacity onPress={() => {navigation.navigate('Checkout')}}
+                    style={[styles.addToCartBtn, {width: 120, height:40, justifyContent: 'center', alignItems: 'center', marginLeft: 60}]}>
                     <Text style={styles.checkoutText}>Checkout</Text>
                 </TouchableOpacity>
             </View>

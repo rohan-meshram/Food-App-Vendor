@@ -38,6 +38,7 @@ const UserSignup = () => {
                 Password: password,
                 userId: userId,
                 Cart: [],
+                Address: []
             }).then(res => {
                 setModalVisible(false);
                 navigation.goBack();
